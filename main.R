@@ -188,6 +188,19 @@ train_subset <- sample(1:sample_size, train_size);
 
 ggpairs(iris, upper = list(continuous = wrap("cor", family = "sans")));
 
+#boxplot y density interesantes
+ggplot(data = iris, aes(Petal.Length, fill="red")) + 
+  geom_density(alpha = 0.1) +
+  theme(legend.position = "none") + 
+  xlab("Largo del pétalo") +
+  ylab("Densidad")
+
+ggplot(iris, aes(x=Species, y=Petal.Length, fill=Species)) + 
+  geom_violin(trim=FALSE)+
+  geom_boxplot(width=0.1, fill="white")+
+  labs(title="Largo de los pétalos según especie", x="Especie", y = "Largo")
+
+
 # a) Suponiendo normalidad en los ,datos, hacer una clasificacion lineal
 #    y calcular el error de clasificacion de dos maneras:
 #    1) proporcion de datos mal clasificados (error aparente)
